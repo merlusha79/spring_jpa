@@ -4,32 +4,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlayerService {
+
     @Autowired
-    private PlayerDao dao;
+    private PlayerRepository repository;
 
     public List<Player> getAllPlayers() {
-        return dao.getAllPlayers();
+        return repository.getAll();
     }
 
     public void addPlayer(Player player) {
-        dao.insert(player);
+        repository.insert(player);
     }
 
     public void updatePlayer(Player player) {
-        dao.update(player);
+        repository.update(player);
     }
 
     public Player getPlayer(int id) {
-         return   dao.findById(id).orElseThrow(() -> new IllegalArgumentException("No Value Present"));
+         return  repository.findById(id);
 
     }
 
     public void deletePlayer(int playerId) {
-        dao.deleteById(playerId);
+        repository.delete(playerId);
     }
 
 }

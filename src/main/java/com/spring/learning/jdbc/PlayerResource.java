@@ -9,35 +9,35 @@ import java.util.List;
 public class PlayerResource {
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceJpa playerService;
 
     @GetMapping("/players")
     public List<Player> getAllPlayers() {
-        return playerService.getAllPlayers();
+        return playerService.getAll();
 
     }
 
     @GetMapping(path = "/players/{id}")
     public Player getPlayer(@PathVariable("id") int id) {
-        return playerService.getPlayer(id);
+        return playerService.findById(id);
 
     }
 
     @DeleteMapping(path = "/players/{id}")
     public void deletePlayer(@PathVariable("id") int id) {
-        playerService.deletePlayer(id);
+        playerService.delete(id);
 
     }
 
     @PostMapping(path = "/players")
     public void addPlayer(Player player) {
-        playerService.addPlayer(player);
+        playerService.insert(player);
 
     }
 
     @PutMapping(path = "/players/{id}")
     public void updatePlayer(@PathVariable("id") int id, @RequestBody Player player) {
-        playerService.updatePlayer(player);
+        playerService.update(player);
 
     }
 }
