@@ -1,7 +1,7 @@
 package com.spring.learning.jdbc;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +21,8 @@ public class Player {
 
     @Column(name="nationality")
     private String nationality;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthDate;
     private int titles;
 
